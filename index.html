@@ -5,46 +5,20 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <style>
     * { margin: 0; padding: 0; box-sizing: border-box; }
-    body { overflow: hidden; display: flex; flex-direction: column; height: 100vh; background: #0d0d0d; }
+    body { overflow: hidden; display: flex; flex-direction: column; height: 100vh; }
 
+    /* ---- TOP BAR ---- */
     .top-bar {
-      background: linear-gradient(90deg, #0d0d0d 0%, #1a3a1a 50%, #0d0d0d 100%);
-      border-bottom: 2px solid #2ecc71;
+      background-color: #1a5276; /* dark blue - change this */
       color: white;
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      padding: 0 24px;
-      height: 54px;
-      font-family: Arial, sans-serif;
-    }
-
-    .room-name {
+      text-align: center;
+      padding: 10px;
       font-size: 22px;
+      font-family: Arial, sans-serif;
       font-weight: bold;
-      color: #2ecc71;
-      letter-spacing: 1px;
     }
 
-    .clock {
-      font-size: 26px;
-      font-weight: bold;
-      color: white;
-      letter-spacing: 2px;
-    }
-
-    .date {
-      font-size: 14px;
-      color: #aaaaaa;
-      text-align: right;
-    }
-
-    .right-side {
-      display: flex;
-      flex-direction: column;
-      align-items: flex-end;
-    }
-
+    /* ---- CALENDAR ---- */
     iframe {
       flex: 1;
       width: 100%;
@@ -54,35 +28,12 @@
 </head>
 <body>
 
-  <div class="top-bar">
-    <div class="room-name">📅 Boardroom 201 — Eng Dept</div>
-    <div class="right-side">
-      <div class="clock" id="clock">--:-- --</div>
-      <div class="date" id="date"></div>
-    </div>
-  </div>
+  <div class="top-bar">AWS Boardroom 201</div>
 
   <iframe src="https://outlook.office365.com/owa/calendar/c870a918327b420ebb3668c5dbd6d87c@augustwinter.com/03fcf3fb788947aba6baf1d59342fbfb18057765420360446687/calendar.html"></iframe>
 
-  <script>
-    function updateClock() {
-      const now = new Date();
-      const h = now.getHours();
-      const m = now.getMinutes().toString().padStart(2, '0');
-      const ampm = h >= 12 ? 'PM' : 'AM';
-      const h12 = (h % 12) || 12;
-      document.getElementById('clock').textContent = h12 + ':' + m + ' ' + ampm;
-
-      const days = ['Sunday','Monday','Tuesday','Wednesday','Thursday','Friday','Saturday'];
-      const months = ['Jan','Feb','Mar','Apr','May','Jun','Jul','Aug','Sep','Oct','Nov','Dec'];
-      document.getElementById('date').textContent =
-        days[now.getDay()] + ', ' + months[now.getMonth()] + ' ' + now.getDate() + ', ' + now.getFullYear();
-    }
-    updateClock();
-    setInterval(updateClock, 1000);
-  </script>
-
 </body>
+</html>
 </html>
 
 </body>
